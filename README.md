@@ -1,2 +1,5 @@
 # GitCompPhys
 CompPhys
+
+
+noe ekstra

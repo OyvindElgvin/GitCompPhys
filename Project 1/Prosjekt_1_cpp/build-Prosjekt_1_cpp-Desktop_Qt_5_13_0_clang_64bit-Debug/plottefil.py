@@ -2,7 +2,7 @@
 from matplotlib.pyplot import *
 import numpy as np
 
-ns= [10, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7]
+ns= [10, 1e2, 1e3]#, 1e4, 1e5, 1e6, 1e7]
 
 hs = []
 errors = []
@@ -53,22 +53,33 @@ for n in ns:
 
 
         errors.append(min(error_general[1:-1]))
-        print(errors)
+        #print(errors)
 
 
-        plot(x, general,label="Generalized")
-        plot(x, spes,label="Specialized")
-        plot(x, exact,label="Exact")
-        title("Generalized solution with n = %g" %(n))
-        legend()
-        xlabel("x = i*h")
+        #plot(x, general,label="Generalized")
+        #plot(x, spes,label="Specialized")
+        #plot(x, exact,label="Exact")
+        #title("Generalized solution with n = %g" %(n))
+        #legend()
+        #xlabel("x = i*h")
+        #ylabel("v")
+        #show()
+
+        plot(x, general, label="n = %g" %(n))
+        title("Comparing generalized Thomas for various n")
+        xlabel("x")
         ylabel("v")
-        show()
+        legend()
         f.close()
 
 
-plot(np.log10(np.array(hs)),errors)
-title("log10 Relative Error")
-xlabel("log10(h)")
-ylabel("y")
+#plot(np.log10(np.array(hs)),errors)
+#title("log10 Relative Error")
+#xlabel("log10(h)")
+#ylabel("y")
+
+#plot(x, general, label="n = %g" %n)
+
+
+
 show()

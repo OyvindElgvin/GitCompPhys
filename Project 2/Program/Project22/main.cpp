@@ -113,8 +113,8 @@ int main(int argc, char* argv[] )
 
     int N = atoi(argv[2]);
     string filename = argv[1];
-    mat A;
-    A = zeros(N,N);
+    mat A = randn<mat>(N,N);
+    cout << A << endl;
 
 
 

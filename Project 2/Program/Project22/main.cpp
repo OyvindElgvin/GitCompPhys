@@ -10,6 +10,46 @@
 using namespace std;
 using namespace arma;
 
+// decleration of functions
+
+double maxoffdiag(double** A, int* k, int* l, int n);
+void rotate (double** A, double** R, int k, int l, int n);
+void Jacobi (double** A, double** R, int n);
+
+
+
+int main(int argc, char* argv[] )
+{
+
+    // setting up an A nxn random matrix to diagonalize
+    int N = atoi(argv[2]);
+    mat A = randn<mat>(N,N);
+
+    cout << "matrix A: " << endl << A << endl;
+
+
+    // analytically diagonalizing with armadillo
+    mat A_diagonalized;
+    A_diagonalized = diagmat(A,-1) + diagmat(A,0) + diagmat(A,1);
+
+    cout << "arma diag A: " << endl << A_diagonalized << endl;
+
+
+    // setting up an empty R matrix
+    mat R(N,N, fill::zeros);
+
+
+
+
+
+    mat B;
+    //B = maxoffdiag(A,R,N,N,N);
+
+    return 0;
+}
+
+
+
 
 
 
@@ -106,23 +146,4 @@ void Jacobi (double** A, double** R, int n){
     return;
 }
 
-int main(int argc, char* argv[] )
-{
 
-    // setting up an A nxn random matrix to diagonalize
-
-    int N = atoi(argv[2]);
-    string filename = argv[1];
-    mat A = randn<mat>(N,N);
-    cout << A << endl;
-
-
-
-
-
-
-
-
-
-return 0;
-}

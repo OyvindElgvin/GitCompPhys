@@ -1,4 +1,3 @@
 # GitCompPhys
-CompPhys
 
-Folders for Computational Physics
+Folders for Computational Physics 3150

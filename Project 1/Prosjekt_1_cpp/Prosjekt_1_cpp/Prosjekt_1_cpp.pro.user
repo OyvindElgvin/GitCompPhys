@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.2, 2019-09-12T12:23:34. -->
+<!-- Written by QtCreator 4.9.2, 2019-09-13T15:50:43. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -307,7 +307,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Prosjekt_1_cpp</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Prosjekt_1_cpp2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/oyvindengebretsen/Documents/UiO/Semester_5/CompPhys/Git/GitCompPhys/Project 1/Prosjekt_1_cpp/Prosjekt_1_cpp/Prosjekt_1_cpp.pro</value>
-    <value type="QString" key="RunConfiguration.Arguments"></value>
+    <value type="QString" key="RunConfiguration.Arguments">hh 10</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
@@ -316,6 +316,7 @@
     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseTerminal">false</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/oyvindengebretsen/Documents/UiO/Semester_5/CompPhys/Git/GitCompPhys/Project 1/Prosjekt_1_cpp/build-Prosjekt_1_cpp-Desktop_Qt_5_13_0_clang_64bit-Debug</value>
    </valuemap>

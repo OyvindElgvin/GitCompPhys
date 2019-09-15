@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 
     ofile.open(fileout);
 
-    int n = atoi(argv[2]);
+    unsigned int n = unsigned (atoi(argv[2]));
 
     // vector lengths
 
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
     double h = 1 / double (n+1); // step size
 
     // grid points
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         x[i] = i*h;
     }
 
@@ -57,28 +57,28 @@ int main(int argc, char* argv[]){
 
 
     // Exact solution
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         exact[i] = 1 - (1-exp(-10))*x[i] - exp(-10*x[i]);
     }
 
     // function
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         f[i] = 100*exp(-10*x[i]);
     }
 
     // vector elements of b
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         b[i] = 2;
     }
 
     // vector elements of a, c
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         a[i] = -1;
         c[i] = -1;
     }
 
     // vector elements for b_tilde
-    for (int i = 0; i < n+1; i++){
+    for (unsigned int i = 0; i < n+1; i++){
         b_tilde[i] = h*h*f[i];
     }
 
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
     start = clock();
 
     //forward general substitution
-    for (int i = 2; i < n+1; i++){
+    for (unsigned int i = 2; i < n+1; i++){
         b[i] = b[i] - a[i-1]*c[i-1] / b[i-1];
         b_tilde[i] = b_tilde[i] - b_tilde[i-1]*c[i-1] / b[i-1];
     }
@@ -97,7 +97,7 @@ int main(int argc, char* argv[]){
     //backwards general substitution
     v_general[n] = b_tilde[n] / b[n];
 
-    for (int i = n-1; i > 0; i--){
+    for (unsigned int i = n-1; i > 0; i--){
         v_general[i] = (b_tilde[i] - c[i]*v_general[i+1]) / b[i];
     }
 
@@ -120,13 +120,13 @@ int main(int argc, char* argv[]){
 
 
     // flops outside the clock
-    for (int i = 1; i < n+1; i++){
+    for (unsigned int i = 1; i < n+1; i++){
         b_spes[i] = (i+1) / double (i);
 
     }
 
     // vector elements for b_tilde_spes
-    for (int i = 1; i < n+1; i++){
+    for (unsigned int i = 1; i < n+1; i++){
         b_tilde_spes[i] = h*h*f[i];
     }
 
@@ -134,13 +134,13 @@ int main(int argc, char* argv[]){
 
     // Specialised Gauss
     // forward specialized substitution
-    for (int i = 2; i < n+1; i++){
+    for (unsigned int i = 2; i < n+1; i++){
         b_tilde_spes[i] = b_tilde_spes[i] + b_tilde_spes[i-1] / (b_spes[i-1]);
     }
 
     // backwards specialized substitution
     v_spes[n] = b_tilde_spes[n] / b_spes[n];
-    for (int i = n-1; i > 0; i--){
+    for (unsigned int i = n-1; i > 0; i--){
         v_spes[i] = (b_tilde_spes[i] + v_spes[i+1]) / (b_spes[i]);
     }
 
@@ -161,7 +161,7 @@ int main(int argc, char* argv[]){
     mat A;
     A = zeros(n+2,n+2);
 
-    for (int i = 0; i < n+2; i++){
+    for (unsigned int i = 0; i < n+2; i++){
         A(i,i) = 2;
         if (i > 0)
         {
@@ -190,7 +190,7 @@ int main(int argc, char* argv[]){
 
 
     // calculating the relative errors
-    for (int i = 1; i < n; i++){
+    for (unsigned int i = 1; i < n; i++){
         relativeError_general[i] = log10(fabs((v_general[i] - exact[i]) / exact[i]));
     }
 
@@ -198,7 +198,7 @@ int main(int argc, char* argv[]){
     // writes values of (x, v_general, v_spes, exact, relativeError_general) to file
     ofile << setiosflags(ios::showpoint | ios::uppercase);
     ofile << "          x,              v_generalized,  v_specialized,  exact,          relative error" << endl;
-    for (int i = 0; i < n+2; i++){
+    for (unsigned int i = 0; i < n+2; i++){
         ofile << setw(20) << setprecision(8)
               << x[i] << ",     "
               << v_general[i] << ",     "

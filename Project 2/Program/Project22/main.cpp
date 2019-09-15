@@ -22,7 +22,7 @@ int main(int argc, char* argv[] )
 {
 
     // setting up an A nxn random matrix to diagonalize
-    int N = atoi(argv[2]);
+    unsigned int N = atoi(argv[2]);
     mat A = randn<mat>(N,N);
 
     cout << "matrix A: " << endl << A << endl;
@@ -43,7 +43,7 @@ int main(int argc, char* argv[] )
 
 
     mat B;
-    //B = maxoffdiag(A,R,N,N,N);
+    //B = maxoffdiag(A,R,k,l,N);
 
     return 0;
 }

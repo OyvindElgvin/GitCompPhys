@@ -20,19 +20,21 @@ void Jacobi (double** A, double** R, int n);
 
 int main(int argc, char* argv[] )
 {
+    // setting ut the dimension, N
+    unsigned int N = unsigned (atoi(argv[2]));
+
 
     // setting up an A nxn random matrix to diagonalize
-    unsigned int N = atoi(argv[2]);
     mat A = randn<mat>(N,N);
-
     cout << "matrix A: " << endl << A << endl;
+
 
 
     // analytically diagonalizing with armadillo
     mat A_diagonalized;
     A_diagonalized = diagmat(A,-1) + diagmat(A,0) + diagmat(A,1);
-
     cout << "arma diag A: " << endl << A_diagonalized << endl;
+
 
 
     // setting up an empty R matrix
@@ -43,7 +45,7 @@ int main(int argc, char* argv[] )
 
 
     mat B;
-    //B = maxoffdiag(A,R,k,l,N);
+    B = maxoffdiag(A,R,k,l,N);
 
     return 0;
 }

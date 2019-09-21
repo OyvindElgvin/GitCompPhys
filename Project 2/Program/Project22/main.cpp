@@ -25,27 +25,37 @@ int main(int argc, char* argv[] )
 
 
     // setting up an A nxn random matrix to diagonalize
-    mat A = randn<mat>(N,N);
-    cout << "matrix A: " << endl << A << endl;
+    mat B = randn<mat>(N,N);
+    cout << "matrix A: " << endl << B << endl;
+    mat A_sym = B.t()*B;
+    cout << "matrix A_sym: " << endl << A_sym << endl;
 
 
 
     // analytically diagonalizing with armadillo
     mat A_diagonalized;
-    A_diagonalized = diagmat(A,-1) + diagmat(A,0) + diagmat(A,1);
-    cout << "arma diag A: " << endl << A_diagonalized << endl;
+    A_diagonalized = diagmat(A_sym,-1) + diagmat(A_sym,0) + diagmat(A_sym,1);
+    cout << "arma diag A_sym: " << endl << A_diagonalized << endl;
 
 
 
     // setting up an empty R matrix
     mat R(N,N, fill::zeros);
+    cout << "matrix R: " << endl << R << endl;
 
 
 
+    // generating the eigenvalues in armadillo
+    vec eigenvalues;
+    mat eigenvectors;
+    eig_sym(eigenvalues, eigenvectors, A_sym);
+    cout << eigenvalues << endl;
 
 
-    mat B;
-    B = maxoffdiag(A,R,k,l,N);
+
+    mat C;
+    int k,l;
+    B = maxoffdiag(  noe her   ,k,l,N);
 
     return 0;
 }
@@ -132,7 +142,6 @@ void Jacobi (double** A, double** R, int n){
     }
 
     // Loop for rotating the matrix
-
     int k, l;
     double tol = 1e-8;
     int iterations = 0.0;

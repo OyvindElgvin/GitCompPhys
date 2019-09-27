@@ -13,7 +13,7 @@ for line in f:
     cols.append(float(words[0]))
 
 
-#cols.sort()
+
 #print(cols)
 
 
@@ -24,5 +24,11 @@ R = np.loadtxt("2bR", skiprows=2)
 GS_index = np.argmin(np.array(cols))
 
 GS_vec = R[:, GS_index]
-print(cols[GS_index])
-print(GS_index, GS_vec)
+#print(cols[GS_index])
+#print(GS_index, GS_vec)
+
+cols.sort()
+print(cols[0])
+print(cols[1])
+print(cols[2])
+print(cols[3])

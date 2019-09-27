@@ -15,9 +15,7 @@ using namespace arma;
 // decleration of functions
 
 double maxoffdiag(mat A, int & k, int & l, int n);
-//void rotate (mat &A, mat &R, int k, int l, int n);
 void jacobi (mat A, mat R, int n);
-
 void output(string, double, double, int, vec& );
 mat test_maxoff_mat(int n);
 
@@ -50,10 +48,17 @@ int main(int argc, char* argv[])
     vec eigenvalues;
     mat eigenvectors;
     eig_sym(eigenvalues, eigenvectors, A);
+    cout << endl
+         << "2a results = " << endl
+         << "Armadillo eigenvalues 2b = " << endl
+         << eigenvalues(0) << endl
+         << eigenvalues(1) << endl
+         << eigenvalues(2) << endl
+         << eigenvalues(3) << endl;
 
     chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
     chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double> >(t2 - t1);
-    cout << "Armadillo used " << time_span.count() << " seconds.";
+    cout << endl << "Armadillo used " << time_span.count() << " seconds.";
     cout << endl;
 
 
@@ -85,54 +90,31 @@ int main(int argc, char* argv[])
     mat test1 = test_maxoff_mat(5);    // matrix with 3 as highest element value
     //cout << test1 << endl;
     double testen = maxoffdiag(test1, k, l, 5);
-    cout << "Test functions" << endl
+    cout << endl
+         << "Test functions" << endl
          << "Test 1" << endl
          << "if the test prints out 3, it works " << endl
          << "if not, it doesn't" << endl
          << testen << endl;
 
 
-    // checks if the orthogonal principal is preserved
-    mat vv = randu<mat>(5,5);
-    mat v = orth(vv);
-
-    mat vT = trans(v);
-    mat delta = vT * v;
-    cout << "delta = " << endl
-         << delta << endl;
-
-
-    mat u = randu<mat>(5,5);
-    mat uT = trans(u);
-
-    mat w = u * v;
-    mat wT = vT * uT;
-    mat wTw = vT * uT * u * v;
-
-
-
-    //cout << "Test 2"<< endl
-    //     << "delta = " << endl
-    //     << delta << endl
-    //     << "wTw = " << endl
-    //     << wTw << endl;
-
-
-
-
-
-    // 2d, Quantum dots in three dimensions, one electron
 
 
     int Dim = 100;      // dimension of the matrix
     int Rmin = 0.0;     // rho_min
     int Rmax = 8;       // rho_max
+
+    // 2d, Quantum dots in three dimensions, one electron
+
+
+
     mat R2(Dim,Dim, fill::zeros);
     mat ham = get_ham_2d(Dim, Rmax);    // Setting up the matrix for one electron
 
-    // finding the analytical solution with armadillo
+    // printing the analytical solution from armadillo
     vec Eigval(Dim);
     eig_sym(Eigval, ham);
+    cout << endl;
     output("2d", Rmin, Rmax, Dim, Eigval); // prints out eigenvalues
 
 
@@ -148,12 +130,15 @@ int main(int argc, char* argv[])
     // 2e, Quantum dots in three dimensions, two electrons
 
 
-    double omega = 5;
+    double omega = 0.01;
+    //vec omega = (0.01, 0.5, 1, 5); sjekk dette
+
     mat ham_2e = get_ham_2e(Dim, omega, Rmax);
 
-    // finding the analytical solution with armadillo
+    // printing the analytical solution from armadillo
     vec Eigval_2e(Dim);
     eig_sym(Eigval_2e, ham_2e);
+    cout << endl;
     output("2e", Rmin, Rmax, Dim, Eigval_2e);
 
 

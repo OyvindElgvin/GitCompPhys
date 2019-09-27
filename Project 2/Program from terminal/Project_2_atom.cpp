@@ -15,10 +15,11 @@ using namespace arma;
 // decleration of functions
 
 double maxoffdiag(mat A, int & k, int & l, int n);
-void rotate (mat &A, mat &R, int k, int l, int n);
+//void rotate (mat &A, mat &R, int k, int l, int n);
 void jacobi (mat A, mat R, int n);
-double potential(double);
+
 void output(string, double, double, int, vec& );
+mat test_maxoff_mat(int n);
 
 
 
@@ -77,12 +78,44 @@ int main(int argc, char* argv[])
 
 
     // 2c tests
-/*
 
-    test1(1,1);
-    cout << A_test << endl;
+    // makes a identity matrix with one element with value 3
+    // and tests if the maxoffdiag function picks it out.
+    int k, l;
+    mat test1 = test_maxoff_mat(5);    // matrix with 3 as highest element value
+    //cout << test1 << endl;
+    double testen = maxoffdiag(test1, k, l, 5);
+    cout << "Test functions" << endl
+         << "Test 1" << endl
+         << "if the test prints out 3, it works " << endl
+         << "if not, it doesn't" << endl
+         << testen << endl;
 
-*/
+
+    // checks if the orthogonal principal is preserved
+    mat vv = randu<mat>(5,5);
+    mat v = orth(vv);
+
+    mat vT = trans(v);
+    mat delta = vT * v;
+    cout << "delta = " << endl
+         << delta << endl;
+
+
+    mat u = randu<mat>(5,5);
+    mat uT = trans(u);
+
+    mat w = u * v;
+    mat wT = vT * uT;
+    mat wTw = vT * uT * u * v;
+
+
+
+    //cout << "Test 2"<< endl
+    //     << "delta = " << endl
+    //     << delta << endl
+    //     << "wTw = " << endl
+    //     << wTw << endl;
 
 
 
@@ -100,7 +133,7 @@ int main(int argc, char* argv[])
     // finding the analytical solution with armadillo
     vec Eigval(Dim);
     eig_sym(Eigval, ham);
-    output("2d", Rmin, Rmax, Dim, Eigval);
+    output("2d", Rmin, Rmax, Dim, Eigval); // prints out eigenvalues
 
 
     // finding the appoximate solution with jacobi for one electron
@@ -134,38 +167,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-
-
-
-
-
-
-
-
-// functions
-
-
-/*
-// 2c function
-
-void test1(){
-    int t = 4;
-    mat A_test;
-    // filling in A
-    for ( int i = 0; i < t; i++){
-        A_test(i,i) = 2.0;
-        if (i > 0)
-        {
-            A_test(i,i-1) = -1.0;
-        }
-        if (i <= t-2)
-        {
-            A_test(i,i+1) = -1.0;
-        }
-    }
-    vec test_eigval(n);
-    mat test_eigvec(n);
-    eig_gen(test_eigval, test_eigvec, A_test);
-
-}
-*/

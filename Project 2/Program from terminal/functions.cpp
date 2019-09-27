@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <chrono>
 #include <ctime>
-//#include "jacobi.h"
+
 
 
 using namespace std;
@@ -96,7 +96,7 @@ void jacobi (string filename, mat A, mat R, int n){
     // Loop for rotating the matrix
     int k, l;
     double tol = 1e-8;
-    int iterations = 0.0;
+    int iterations = 0;
     double max_nr_itera = double (n) * double (n) * double (n);
     double max_offdiag = maxoffdiag (A, k, l, n);
 

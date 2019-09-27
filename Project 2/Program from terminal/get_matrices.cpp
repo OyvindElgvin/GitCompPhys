@@ -115,3 +115,12 @@ mat get_ham_2e(int Dim, double omega, double Rmax){
 
 	return Hamiltonian;
 }
+
+
+
+mat test_maxoff_mat(int n){
+    mat test_maxoff_mat(n,n,fill::eye);
+    test_maxoff_mat(1,3) = 3;
+	return test_maxoff_mat;
+
+}

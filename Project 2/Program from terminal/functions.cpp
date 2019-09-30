@@ -8,8 +8,6 @@
 #include <chrono>
 #include <ctime>
 
-
-
 using namespace std;
 using namespace arma;
 
@@ -29,9 +27,7 @@ double maxoffdiag(mat A, int & k, int & l, int N){
 }
 
 
-
 // Function for the rotation
-
 void rotate (mat & A, mat & R, int k, int l, int n){
     double s, c;
     if (A(k,l) != 0.0){
@@ -77,11 +73,8 @@ void rotate (mat & A, mat & R, int k, int l, int n){
 }
 
 
-
 // making the eigenvector matrix R
-
 void jacobi (string filename, mat A, mat R, int n){
-
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
             if (i == j){
@@ -92,7 +85,6 @@ void jacobi (string filename, mat A, mat R, int n){
             }
         }
     }
-
     // Loop for rotating the matrix
     int k, l;
     double tol = 1e-8;
@@ -100,25 +92,21 @@ void jacobi (string filename, mat A, mat R, int n){
     double max_nr_itera = double (n) * double (n) * double (n);
     double max_offdiag = maxoffdiag (A, k, l, n);
 
-
     while ( max_offdiag > tol && double (iterations) < max_nr_itera){
         max_offdiag = maxoffdiag (A, k, l, n);
         rotate (A, R, k, l, n);
         iterations++;
     }
-    //cout << "# iterations = " << iterations << endl;
-    //cout << "A = " << endl << A << endl;
-    //cout << "R = " << endl << R << endl;
+    cout << "# iterations for " << filename << " = "<< iterations << endl;
 
+	// makes two files, one with aigenvalues and one with eigenvectors
     vec A_diag = A.diag();
     A_diag.save(filename + "A_eigvalues", arma_ascii);
-    R.save(filename + "R", arma_ascii);
-
-
+    R.save(filename + "R_eigenvectors", arma_ascii);
     return;
 }
 
-
+// function for printing out aigenvalues
 void output(string filename, double Rmin , double Rmax, int Dim, vec& d){
     int i;
     cout << "RESULTS:" << filename << endl;
@@ -126,7 +114,7 @@ void output(string filename, double Rmin , double Rmax, int Dim, vec& d){
     cout <<"Rmin = " << setw(15) << setprecision(8) << Rmin << endl;
     cout <<"Rmax = " << setw(15) << setprecision(8) << Rmax << endl;
     cout <<"Number of steps = " << setw(4) << Dim << endl;
-    cout << "Five lowest eigenvalues with armadillo:" << endl;
+    cout << "Four lowest eigenvalues with armadillo:" << endl;
     for(i = 0; i < 4; i++) {
         cout << setw(15) << setprecision(8) << d[i] << endl;
     }

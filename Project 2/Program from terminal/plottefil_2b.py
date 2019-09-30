@@ -1,34 +1,57 @@
 
-
 from matplotlib.pyplot import *
 import numpy as np
 
-cols = []
+Rmin = 0.0
+Rmax = 8
+N = 200
 
-f = open("2bA_eigvalues","r")
-f.readline()
-f.readline()
-for line in f:
-    words = line.split()
-    cols.append(float(words[0]))
+# sort eigenvectors and eigenvalues
 
+r = np.linspace(Rmin,Rmax,N)
+EigValues = np.loadtxt("2bA_eigvalues", skiprows=2)
+EigVectors = np.loadtxt("2bR_eigenvectors", skiprows=2)
+permute = EigValues.argsort()
+EigValues = EigValues[permute]
+EigVectors = EigVectors[:,permute]
 
+# plots the results for the three lowest lying eigenstates
+print("three lowest eigenvalues for 2b:")
+for i in range(3):
+    print (EigValues[i])
 
-#print(cols)
+# sorting the eigenvalues and use that order to sort the eigenvectors
+FirstEigvector = EigVectors[:,0]
+SecondEigvector = EigVectors[:,1]
+ThirdEigvector = EigVectors[:,2]
 
+# plotting the three lowest eigenvectors
+plot(r, FirstEigvector**2, label="Ground state")
+plot(r, SecondEigvector**2, label="Second state")
+plot(r, ThirdEigvector**2, label="Third state")
+xlabel(r'$r$')
+ylabel(r'Radial probability $r^2|R(r)|^2$')
+title(r'Radial probability distributions for three lowest-lying states')
+legend()
+savefig('2b_eigenvector.pdf')
+show()
 
+# plotting iterations vs N
+iterations = [7, 17664, 70859, 160258]
+N = [4, 100, 200, 300]
+plot(N,iterations)
+xlabel("N")
+ylabel("Number of iterations")
+title("Iterations as function of N")
+savefig('2b_Iterations_vs_N.pdf')
+show()
 
-R = np.loadtxt("2bR", skiprows=2)
-#print(R)
-
-GS_index = np.argmin(np.array(cols))
-
-GS_vec = R[:, GS_index]
-#print(cols[GS_index])
-#print(GS_index, GS_vec)
-
-cols.sort()
-print(cols[0])
-print(cols[1])
-print(cols[2])
-print(cols[3])
+# plotting time vs N
+seconds = [0, 0.87475, 12.6909, 62.4196]
+N = [4, 100, 200, 300]
+plot(N,seconds)
+xlabel("N")
+ylabel("Seconds")
+title("Time as function of N")
+savefig('2b_time_vs_N.pdf')
+show()

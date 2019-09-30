@@ -1,33 +1,17 @@
 
-
 from matplotlib.pyplot import *
 import numpy as np
 
-cols = []
-
-f = open("2dA_eigvalues","r")
-f.readline()
-f.readline()
-for line in f:
-    words = line.split()
-    cols.append(float(words[0]))
 
 
-#cols.sort()
-#print(cols)
-
-
-
-R = np.loadtxt("2dR", skiprows=2)
-#print(R)
-
-GS_index = np.argmin(np.array(cols))
-
-GS_vec = R[:, GS_index]
-#print("jacobi 2d lowest eigenvalu:")
-#print(cols[GS_index])
-#print(GS_index, GS_vec)
-
+EigValues = np.loadtxt("2dA_eigvalues", skiprows=2)         # 2d
+EigVectors = np.loadtxt("2dR_eigenvectors", skiprows=2)     # 2d
+permute = EigValues.argsort()
+EigValues = EigValues[permute]
+EigVectors = EigVectors[:,permute]
+print("three lowest eigenvalues for 2d:")
+for i in range(3):
+    print (EigValues[i])
 # makes a plot of eigenvalues vs rho_max
 
 Rmax =           [       4        ,       6         ,    8           ,      10         ,       12        ,         14      ,        16       ,      18         ,        20]
@@ -37,14 +21,14 @@ eigenvalue_100 = [2.99952186709985, 2.99887454386175, 2.9979985571119, 2.9968714
 eigenvalue_80  = [2.99923899185503, 2.99824107317421, 2.9968714733400, 2.99510856223066, 2.99295082575143, 2.99039639489375, 2.98744303420868, 2.98408812774886, 2.98032866223699]
 eigenvalue_60  = [2.99862862261759, 2.99687147334012, 2.9944332711167, 2.99129207930722, 2.98744303420867, 2.98288008419831, 2.97759592063636, 2.97158189142357, 2.96482789432465]
 
-
 plot(Rmax, eigenvalue_200, label="N = 200")
 plot(Rmax, eigenvalue_150, label="N = 150")
 plot(Rmax, eigenvalue_100, label="N = 100")
 plot(Rmax, eigenvalue_80, label="N = 80")
 plot(Rmax, eigenvalue_60, label="N = 60")
-title("eig func of rho_max")
-xlabel("Rho_max")
+title("Eigenvalues func of Rmax for different dimensions")
+xlabel("Rmax")
 ylabel("Eigenvalues")
 legend()
+savefig('2d_Eigenvalues_vs_Rmax.pdf')
 show()

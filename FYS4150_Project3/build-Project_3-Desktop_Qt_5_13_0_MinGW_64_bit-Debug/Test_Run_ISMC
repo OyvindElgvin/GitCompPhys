@@ -1,0 +1,60 @@
+do you want to save runtimes? y or n
+n
+do you want to save results? y or n
+n
+
+Monte Carlo importance sampling used 0.00042204 seconds
+
+Standard deviation = 0.003878
+Variance = 0.0150389
+Integral = 0.169458
+Error = 0.0240418
+Exact = 0.192766
+N = 1000
+
+Monte Carlo importance sampling used 0.00230736 seconds
+
+Standard deviation = 0.00178706
+Variance = 0.0319358
+Integral = 0.188389
+Error = 0.00829439
+Exact = 0.192766
+N = 10000
+
+Monte Carlo importance sampling used 0.0465582 seconds
+
+Standard deviation = 0.000648953
+Variance = 0.0421139
+Integral = 0.193173
+Error = 0.0016781
+Exact = 0.192766
+N = 100000
+
+Monte Carlo importance sampling used 0.618658 seconds
+
+Standard deviation = 0.000210522
+Variance = 0.0443197
+Integral = 0.194232
+Error = 0.000754987
+Exact = 0.192766
+N = 1000000
+
+Monte Carlo importance sampling used 8.04787 seconds
+
+Standard deviation = 6.58509e-005
+Variance = 0.0433634
+Integral = 0.192632
+Error = 0.000306054
+Exact = 0.192766
+N = 10000000
+
+Monte Carlo importance sampling used 76.353 seconds
+
+Standard deviation = 2.09172e-005
+Variance = 0.0437531
+Integral = 0.192735
+Error = 8.36846e-005
+Exact = 0.192766
+N = 100000000
+Press <RETURN> to close this window...
+

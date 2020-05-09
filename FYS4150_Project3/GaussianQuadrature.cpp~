@@ -1,0 +1,14 @@
+#include <iostream>
+#include <lib.h>
+#include <armadillo>
+
+using namespace std;
+using namespace arma;
+
+int main(){
+
+  vec A = vec("1 2 3");
+  cout << A << endl;
+
+
+  return 0}

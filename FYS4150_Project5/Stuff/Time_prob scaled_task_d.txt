@@ -1,0 +1,105 @@
+Do you want to run tests? y/n
+n
+Number of experiment runs?
+4
+Number of MC Cycles?
+100000
+Task d)
+ ------------------
+Running Financial Analysis for
+N = 500
+L = 0
+a = 0.5
+time used by function Financial_analysis: 335.319 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0
+a = 1
+time used by function Financial_analysis: 42.6 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0
+a = 1.5
+time used by function Financial_analysis: 72.332 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0
+a = 2
+time used by function Financial_analysis: 40.001 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0
+a = 0.5
+time used by function Financial_analysis: 1686.18 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0
+a = 1
+time used by function Financial_analysis: 181.257 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0
+a = 1.5
+time used by function Financial_analysis: 201.029 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0
+a = 2
+time used by function Financial_analysis: 165.227 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0.5
+a = 0.5
+time used by function Financial_analysis: 300.571 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0.5
+a = 1
+time used by function Financial_analysis: 360.964 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0.5
+a = 1.5
+time used by function Financial_analysis: 117.598 seconds
+
+Running Financial Analysis for
+N = 500
+L = 0.5
+a = 2
+time used by function Financial_analysis: 90.62 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0.5
+a = 0.5
+time used by function Financial_analysis: 1573.06 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0.5
+a = 1
+time used by function Financial_analysis: 2048.71 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0.5
+a = 1.5
+time used by function Financial_analysis: 732.175 seconds
+
+Running Financial Analysis for
+N = 1000
+L = 0.5
+a = 2
+time used by function Financial_analysis: 688.312 seconds
+
+Press <RETURN> to close this window...
